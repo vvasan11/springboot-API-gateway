@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: routingtech
+server:
+  port: 8081
+
+  eureka:
+    instance:
+      hostname: localhost
+
+  spring:
+    cloud:
+      gateway:
+        routes:
+          - id:videoModule
+            uri:http://localhost:8082
+            predicates:
+              - Path=/video/**
+          - id:imageModule
+            uri:http://localhost:8083
+            predicates:
+              - Path=/picture/**
